@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,12 +8,18 @@ public class MultiplayerManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public NetworkRunner networkRunner;
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
     // Start is called before the first frame update
     void Start()
     {
         Connect();
+        SpawnLocalPlayer();
+    }
 
-        Instantiate(playerPrefab);
+    private void SpawnLocalPlayer()
+    {
+        GameObject player = Instantiate(playerPrefab);
+        cinemachineVirtualCamera.Follow = player.transform.GetChild(0);
     }
 
     private void Connect()
