@@ -10,13 +10,19 @@ public class MultiplayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Connect();
+
+        Instantiate(playerPrefab);
+    }
+
+    private void Connect()
+    {
         networkRunner = GetComponent<NetworkRunner>();
         StartGameArgs startGameArgs = new StartGameArgs();
         startGameArgs.GameMode = GameMode.Shared;
         startGameArgs.SessionName = "ScuolaDiComics1";
         startGameArgs.PlayerCount = 10;
         networkRunner.StartGame(startGameArgs);
-        Instantiate(playerPrefab);
     }
 
     // Update is called once per frame
