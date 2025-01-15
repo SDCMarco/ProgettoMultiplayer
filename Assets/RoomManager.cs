@@ -11,7 +11,9 @@ public class RoomManager : NetworkBehaviour
     {
         foreach(CoinSpawnPoint coinSpawnPoint in FindObjectsOfType<CoinSpawnPoint>())
         {
-            Runner.Spawn(coinPrefab, coinSpawnPoint.transform.position, coinSpawnPoint.transform.rotation);
+           var coin= Runner.Spawn(coinPrefab, coinSpawnPoint.transform.position, coinSpawnPoint.transform.rotation);
+            coin.transform.position = coinSpawnPoint.transform.position;
+            coin.transform.rotation = coinSpawnPoint.transform.rotation;
         }
     }
 }
