@@ -14,6 +14,6 @@ public class Coin : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HasStateAuthority) { Debug.Log("StateAuth"); }
+
     }
 }
