@@ -1,8 +1,9 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : NetworkBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,6 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(Runner.GetPlayerUserId());
     }
 }
