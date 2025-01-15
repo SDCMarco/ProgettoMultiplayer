@@ -7,11 +7,18 @@ public class RoomManager : NetworkBehaviour
 {
     public NetworkObject coinPrefab;
 
+    public void DelayedSpawnCoins()
+    {
+        Invoke(nameof(SpawnCoins), 0.5f);
+
+    }
+
     public void SpawnCoins()
     {
-        foreach(CoinSpawnPoint coinSpawnPoint in FindObjectsOfType<CoinSpawnPoint>())
+        foreach (CoinSpawnPoint coinSpawnPoint in FindObjectsOfType<CoinSpawnPoint>())
         {
-           var coin= Runner.Spawn(coinPrefab, coinSpawnPoint.transform.position, coinSpawnPoint.transform.rotation);
+            var coin = Runner.Spawn(coinPrefab);
+
             coin.transform.position = coinSpawnPoint.transform.position;
             coin.transform.rotation = coinSpawnPoint.transform.rotation;
         }

@@ -92,7 +92,7 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     private void SpawnRoomManager()
     {
         NetworkObject roomManager = networkRunner.Spawn(roomManagerPrefab);
-        roomManager.GetComponent<RoomManager>().SpawnCoins();
+        roomManager.GetComponent<RoomManager>().DelayedSpawnCoins();
     }
 
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
