@@ -1,4 +1,5 @@
 ﻿using Fusion;
+using TMPro;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -110,6 +111,10 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+        public TextMeshPro textCollectedCoins;
+
+        [Networked]
+        public int CollectedCoins { get; set; }
 
         private bool IsCurrentDeviceMouse
         {
