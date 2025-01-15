@@ -15,6 +15,11 @@ public class Coin : NetworkBehaviour
             {
                 Runner.Despawn(GetComponent<NetworkObject>());
             }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+            
         }
     }
 }
