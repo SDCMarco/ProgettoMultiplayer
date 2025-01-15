@@ -11,14 +11,12 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     public NetworkObject playerPrefab;
     public NetworkRunner networkRunner;
     public CinemachineVirtualCamera cinemachineVirtualCamera;
+    public NetworkObject roomManagerPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Buongiorno");
-        Debug.Log("Buonasera");
-
-        Connect();
-    
+        Connect();   
     }
 
     private void SpawnLocalPlayer()
@@ -30,12 +28,14 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     private void Connect()
     {
         networkRunner = GetComponent<NetworkRunner>();
+
         StartGameArgs startGameArgs = new StartGameArgs();
         startGameArgs.GameMode = GameMode.Shared;
         startGameArgs.SessionName = "ScuolaDiComics1";
         startGameArgs.PlayerCount = 10;
+
         networkRunner.StartGame(startGameArgs);
- 
+        
     }
 
     // Update is called once per frame
@@ -83,6 +83,16 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     {
         Debug.Log("Connesso!");
         SpawnLocalPlayer();
+        if (runner.IsSharedModeMasterClient)
+        {
+            SpawnRoomManager();
+        }
+    }
+
+    private void SpawnRoomManager()
+    {
+        NetworkObject roomManager = networkRunner.Spawn(roomManagerPrefab);
+        roomManager.GetComponent<RoomManager>().SpawnCoins();
     }
 
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
