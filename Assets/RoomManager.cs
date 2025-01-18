@@ -1,7 +1,9 @@
 using Fusion;
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -42,7 +44,8 @@ public class RoomManager : NetworkBehaviour
         {
            if(FindObjectsOfType<Coin>().Length == 0)
             {
-                WinnerText = "Gioco finito";
+                string winnerString = FindObjectsOfType<ThirdPersonController>().ToList().OrderBy(x => x.CollectedCoins).Last().Runner.LocalPlayer.ToString();
+                WinnerText = "Gioco finito. Ha vinto: "+winnerString;
             }
         }
     }
