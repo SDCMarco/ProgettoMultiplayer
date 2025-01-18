@@ -9,13 +9,14 @@ public class Coin : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<ThirdPersonController>().ScriviCiao();
-        /*
+      
+     
         if (other.GetComponent<ThirdPersonController>())
         {
             if (HasStateAuthority)
             {
                 Runner.Despawn(GetComponent<NetworkObject>());
+                other.GetComponent<ThirdPersonController>().RPC_AddCoin();
             }
             else
             {
@@ -23,7 +24,7 @@ public class Coin : NetworkBehaviour
             }
             
         }
-        */
+        /*  */
     }
 
 }

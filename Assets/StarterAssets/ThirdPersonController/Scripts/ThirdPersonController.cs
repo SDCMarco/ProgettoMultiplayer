@@ -194,7 +194,7 @@ namespace StarterAssets
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
         public void RPC_AddCoin()
         {
-
+            CollectedCoins++;
         }
 
         public void ScriviCiao()
