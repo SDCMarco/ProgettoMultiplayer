@@ -16,6 +16,12 @@ public class RoomManager : NetworkBehaviour
     public NetworkObject coinPrefab;
     public TextMeshProUGUI winnerTMP;
 
+    public override void Spawned()
+    {
+        base.Spawned();
+        OnWinnerTextChanged();
+    }
+
     public void OnWinnerTextChanged()
     {
         winnerTMP.text = WinnerText;
