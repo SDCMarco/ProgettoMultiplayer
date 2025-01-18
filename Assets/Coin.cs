@@ -9,6 +9,8 @@ public class Coin : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        other.GetComponent<ThirdPersonController>().ScriviCiao();
+        /*
         if (other.GetComponent<ThirdPersonController>())
         {
             if (HasStateAuthority)
@@ -21,5 +23,7 @@ public class Coin : NetworkBehaviour
             }
             
         }
+        */
     }
+
 }

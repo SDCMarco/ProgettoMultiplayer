@@ -191,6 +191,17 @@ namespace StarterAssets
             }
         }
 
+        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+        public void RPC_AddCoin()
+        {
+
+        }
+
+        public void ScriviCiao()
+        {
+            Debug.Log("Ciao");
+        }
+
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");
