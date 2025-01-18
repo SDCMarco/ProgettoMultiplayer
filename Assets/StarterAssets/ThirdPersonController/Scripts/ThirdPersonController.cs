@@ -113,10 +113,15 @@ namespace StarterAssets
         private bool _hasAnimator;
         public TextMeshPro textCollectedCoins;
 
-        public int moneteCollezionate;
 
-        [Networked]
+        [Networked, OnChangedRender(nameof(OnCollectedCoinsChanged))]
         public int CollectedCoins { get; set; }
+
+
+        public void OnCollectedCoinsChanged()
+        {
+            textCollectedCoins.text = CollectedCoins.ToString();
+        }
 
         private bool IsCurrentDeviceMouse
         {
