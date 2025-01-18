@@ -136,6 +136,12 @@ namespace StarterAssets
         }
 
 
+        public override void Spawned()
+        {
+            base.Spawned();
+            OnCollectedCoinsChanged();
+        }
+
         private void Awake()
         {
             // get a reference to our main camera
