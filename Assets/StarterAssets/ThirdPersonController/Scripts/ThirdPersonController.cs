@@ -121,6 +121,11 @@ namespace StarterAssets
         public void OnCollectedCoinsChanged()
         {
             textCollectedCoins.text = CollectedCoins.ToString();
+            RoomManager roomManager = FindObjectOfType<RoomManager>();
+            if (roomManager)
+            {
+                roomManager.CheckEndGame();
+            }
         }
 
         private bool IsCurrentDeviceMouse
