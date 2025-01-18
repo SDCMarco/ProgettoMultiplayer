@@ -113,6 +113,8 @@ namespace StarterAssets
         private bool _hasAnimator;
         public TextMeshPro textCollectedCoins;
 
+        public int moneteCollezionate;
+
         [Networked]
         public int CollectedCoins { get; set; }
 

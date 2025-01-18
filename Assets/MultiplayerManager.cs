@@ -12,6 +12,8 @@ public class MultiplayerManager : MonoBehaviour , INetworkRunnerCallbacks
     public NetworkRunner networkRunner;
     public CinemachineVirtualCamera cinemachineVirtualCamera;
     public NetworkObject roomManagerPrefab;
+    
+
 
     // Start is called before the first frame update
     void Start()
