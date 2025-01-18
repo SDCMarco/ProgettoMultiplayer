@@ -44,8 +44,24 @@ public class RoomManager : NetworkBehaviour
         {
            if(FindObjectsOfType<Coin>().Length == 0)
             {
-                string winnerString = FindObjectsOfType<ThirdPersonController>().ToList().OrderBy(x => x.CollectedCoins).Last().Object.StateAuthority.ToString();
-                WinnerText = "Gioco finito. Ha vinto: "+winnerString;
+                List<ThirdPersonController> orderedPlayerList = FindObjectsOfType<ThirdPersonController>().ToList().OrderBy(x => x.CollectedCoins).ToList();
+                int bestScore = orderedPlayerList.Last().CollectedCoins;
+
+                List<ThirdPersonController> winners = orderedPlayerList.FindAll(x => x.CollectedCoins == bestScore);
+
+                if(winners.Count == 1)
+                {
+                    WinnerText = "Gioco finito. Ha vinto: " + winners.First().Object.StateAuthority.ToString();
+                }
+                else
+                {
+                    string winnersString = "";
+                    foreach(ThirdPersonController tpc in winners)
+                    {
+                        winnersString += tpc.Object.StateAuthority.ToString() + "\n";
+                    }
+                    WinnerText = "Gioco finito. Hanno vinto:"+ winnersString;
+                }
             }
         }
     }
